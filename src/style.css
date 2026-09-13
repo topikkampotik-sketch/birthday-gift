@@ -1,0 +1,1075 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Comfortaa", sans-serif;
+    background: #0d0720;
+    color: white;
+}
+
+#app {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(127, 78, 170, 0.35),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(222, 103, 173, 0.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #100828 0%,
+            #171033 45%,
+            #281443 75%,
+            #0e071d 100%
+        );
+}
+
+
+/* =========================
+   ЗВЁЗДЫ
+========================= */
+
+.stars {
+    position: absolute;
+    inset: 0;
+}
+
+.stars::before,
+.stars::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, #ffd9f1 1px, transparent 1px);
+
+    background-size:
+        80px 90px,
+        130px 120px;
+
+    background-position:
+        10px 20px,
+        50px 70px;
+
+    opacity: 0.6;
+
+    animation: starsMove 8s ease-in-out infinite alternate;
+}
+
+.stars::after {
+    opacity: 0.3;
+    transform: scale(1.5);
+}
+
+@keyframes starsMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================
+   ЛУНА
+========================= */
+
+.moon {
+    position: absolute;
+
+    top: 9%;
+    right: 10%;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffbea,
+            #ffe7ba 60%,
+            #f1c995
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 228, 184, 0.8),
+        0 0 80px rgba(255, 216, 174, 0.25);
+}
+
+.moon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    left: -27px;
+    top: -8px;
+
+    border-radius: 50%;
+
+    background: #10092a;
+}
+
+
+/* =========================
+   ОБЛАКА
+========================= */
+
+.cloud {
+    position: absolute;
+
+    width: 250px;
+    height: 65px;
+
+    border-radius: 100px;
+
+    background: rgba(115, 83, 149, 0.18);
+
+    filter: blur(1px);
+
+    animation: cloudMove 12s ease-in-out infinite alternate;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: inherit;
+}
+
+.cloud::before {
+    width: 110px;
+    height: 110px;
+
+    left: 35px;
+    bottom: 8px;
+}
+
+.cloud::after {
+    width: 90px;
+    height: 90px;
+
+    right: 30px;
+    bottom: 5px;
+}
+
+.cloud-one {
+    top: 25%;
+    left: -70px;
+}
+
+.cloud-two {
+    bottom: 15%;
+    right: -80px;
+
+    transform: scale(1.3);
+
+    animation-delay: -5s;
+}
+
+@keyframes cloudMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(40px);
+    }
+}
+
+
+/* =========================
+   СЕРДЕЧКИ
+========================= */
+
+.hearts span {
+    position: absolute;
+
+    color: rgba(255, 166, 214, 0.5);
+
+    font-size: 22px;
+
+    animation: floating 5s ease-in-out infinite;
+}
+
+.hearts span:nth-child(1) {
+    left: 12%;
+    bottom: 20%;
+}
+
+.hearts span:nth-child(2) {
+    left: 20%;
+    top: 30%;
+    animation-delay: 1s;
+}
+
+.hearts span:nth-child(3) {
+    right: 18%;
+    bottom: 30%;
+    animation-delay: 2s;
+}
+
+.hearts span:nth-child(4) {
+    right: 30%;
+    top: 20%;
+    animation-delay: 3s;
+}
+
+.hearts span:nth-child(5) {
+    left: 45%;
+    bottom: 12%;
+    animation-delay: 1.5s;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(8deg);
+    }
+}
+
+
+/* =========================
+   ГЛАВНАЯ КАРТОЧКА
+========================= */
+
+.intro {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10;
+}
+
+.intro-card {
+    position: relative;
+
+    width: min(600px, 90vw);
+
+    padding: 55px 45px;
+
+    text-align: center;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(47, 28, 69, 0.92),
+            rgba(20, 12, 38, 0.94)
+        );
+
+    border: 1px solid rgba(255, 191, 225, 0.2);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.55),
+        inset 0 0 50px rgba(255, 170, 220, 0.04);
+
+    backdrop-filter: blur(12px);
+
+    animation: cardAppear 1.2s ease;
+}
+
+.intro-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 8px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255, 190, 225, 0.08);
+
+    pointer-events: none;
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================
+   ТЕКСТ
+========================= */
+
+.little-heart {
+    color: #ffafd9;
+
+    font-size: 40px;
+
+    margin-bottom: 15px;
+
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+.small-title {
+    color: #c9b5d7;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: clamp(40px, 6vw, 62px);
+
+    line-height: 1.15;
+
+    font-weight: 600;
+
+    margin-bottom: 25px;
+}
+
+h1 span {
+    color: #ffacd8;
+
+    text-shadow:
+        0 0 25px rgba(255, 125, 203, 0.35);
+}
+
+.description {
+    max-width: 430px;
+
+    margin: 0 auto 32px;
+
+    color: #d2c2dc;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   КНОПКА
+========================= */
+
+button {
+    border: none;
+
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+#startButton {
+    padding: 17px 30px;
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e779b8,
+            #a968d1
+        );
+
+    box-shadow:
+        0 12px 35px rgba(219, 104, 190, 0.35);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#startButton:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 18px 45px rgba(219, 104, 190, 0.5);
+}
+
+#startButton:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   ТЕЛЕФОН
+========================= */
+
+@media (max-width: 600px) {
+
+    .moon {
+        width: 75px;
+        height: 75px;
+
+        top: 5%;
+        right: 5%;
+    }
+
+    .moon::before {
+        width: 70px;
+        height: 70px;
+
+        left: -19px;
+        top: -6px;
+    }
+
+    .intro-card {
+        padding: 40px 25px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+}
+/* ==========================================
+   ВИКТОРИНА
+========================================== */
+
+.quiz-screen,
+.success-screen,
+.gift-screen,
+.secret-screen,
+.final-screen {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10;
+}
+
+
+/* ==========================================
+   КАРТОЧКА ВИКТОРИНЫ
+========================================== */
+
+.quiz-card {
+    width: min(650px, 90vw);
+
+    padding: 45px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(48, 29, 71, 0.95),
+            rgba(20, 12, 39, 0.96)
+        );
+
+    border: 1px solid rgba(255, 190, 225, 0.22);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(15px);
+
+    animation: cardAppear 0.8s ease;
+}
+
+.quiz-top {
+    color: #ffacd8;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+.quiz-progress {
+    color: #a995b4;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+.quiz-card h1 {
+    color: #fff3fa;
+
+    font-size: clamp(28px, 5vw, 40px);
+
+    margin-bottom: 30px;
+}
+
+.answers {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.answer-button {
+    width: 100%;
+
+    padding: 16px 20px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 190, 225, 0.15);
+
+    background: rgba(255,255,255,0.045);
+
+    color: #f9eaf7;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        border 0.2s;
+}
+
+.answer-button:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 150, 210, 0.12);
+
+    border-color: rgba(255, 180, 220, 0.4);
+}
+
+.answer-button.correct {
+    background: rgba(90, 210, 150, 0.18);
+
+    border-color: rgba(90, 210, 150, 0.5);
+}
+
+.answer-button.wrong {
+    background: rgba(255, 80, 120, 0.15);
+
+    border-color: rgba(255, 80, 120, 0.4);
+
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-7px);
+    }
+
+    75% {
+        transform: translateX(7px);
+    }
+}
+
+.quiz-hint {
+    margin-top: 20px;
+
+    min-height: 20px;
+
+    color: #bda9c8;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   УСПЕХ
+========================================== */
+
+.success-card {
+    width: min(580px, 90vw);
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(48, 29, 71, 0.95),
+            rgba(20, 12, 39, 0.96)
+        );
+
+    border: 1px solid rgba(255, 190, 225, 0.22);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.55);
+
+    animation: cardAppear 0.8s ease;
+}
+
+.success-heart {
+    font-size: 75px;
+
+    margin-bottom: 15px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+.success-card h1 {
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+.success-card p {
+    color: #d4c2dc;
+
+    margin-bottom: 10px;
+}
+
+.success-small {
+    color: #a996b0 !important;
+
+    margin-bottom: 30px !important;
+}
+
+
+/* ==========================================
+   ОБЩАЯ КНОПКА
+========================================== */
+
+.main-button,
+.secret-button,
+.hug-button {
+    padding: 16px 28px;
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e779b8,
+            #a968d1
+        );
+
+    box-shadow:
+        0 12px 35px rgba(219, 104, 190, 0.35);
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+
+    cursor: pointer;
+}
+
+.main-button:hover,
+.secret-button:hover,
+.hug-button:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 18px 45px rgba(219, 104, 190, 0.5);
+}
+
+
+/* ==========================================
+   ПОДАРОК
+========================================== */
+
+.gift-card {
+    width: min(620px, 90vw);
+
+    padding: 50px;
+
+    text-align: center;
+
+    color: #49384b;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff1e9,
+            #f8dddd
+        );
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.5);
+
+    transform: rotate(-1deg);
+
+    animation: cardAppear 0.8s ease;
+}
+
+.gift-label {
+    color: #a87588;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+.gift-icon {
+    font-size: 55px;
+
+    margin-bottom: 10px;
+}
+
+.gift-card h1 {
+    color: #a84977;
+
+    font-family: "Pacifico", cursive;
+
+    font-size: 43px;
+
+    margin-bottom: 10px;
+}
+
+.divider {
+    color: #c46d96;
+
+    margin-bottom: 20px;
+}
+
+.gift-card p {
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin-bottom: 13px;
+}
+
+.secret-button {
+    margin-top: 15px;
+
+    color: white;
+
+    border: none;
+}
+
+
+/* ==========================================
+   СЕКРЕТНЫЙ УРОВЕНЬ
+========================================== */
+
+.secret-screen {
+    flex-direction: column;
+
+    overflow-y: auto;
+
+    padding: 30px 15px;
+}
+
+.secret-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+.lock {
+    font-size: 35px;
+}
+
+.secret-label {
+    color: #ffafd8;
+
+    font-size: 16px;
+
+    letter-spacing: 3px;
+}
+
+.secret-subtitle {
+    color: #bba9c8;
+
+    font-size: 12px;
+
+    margin-top: 4px;
+}
+
+.letter {
+    width: min(820px, 94vw);
+
+    padding: 50px 60px;
+
+    color: #49384b;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff2e9,
+            #f8dddd
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.5);
+
+    border-radius: 5px;
+}
+
+.letter h2 {
+    color: #a84977;
+
+    font-family: "Pacifico", cursive;
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
+}
+
+.letter p {
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+.letter-ending {
+    margin-top: 25px;
+
+    text-align: center;
+
+    color: #a84977;
+
+    font-weight: 700;
+}
+
+.love-ending {
+    margin-top: 12px;
+
+    text-align: center;
+
+    color: #c44882;
+
+    font-family: "Pacifico", cursive;
+
+    font-size: 25px;
+}
+
+.signature {
+    margin-top: 20px;
+
+    text-align: right;
+
+    color: #967486;
+
+    font-family: "Pacifico", cursive;
+}
+
+.hug-button {
+    margin-top: 22px;
+}
+
+
+/* ==========================================
+   ФИНАЛ
+========================================== */
+
+.final-screen {
+    flex-direction: column;
+
+    text-align: center;
+}
+
+.final-heart {
+    font-size: 90px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+.final-stars {
+    color: #ffafd8;
+
+    margin: 20px;
+
+    font-size: 20px;
+}
+
+.final-screen h1 {
+    font-size: clamp(38px, 6vw, 65px);
+
+    line-height: 1.2;
+
+    margin-bottom: 20px;
+}
+
+.final-screen h1 span {
+    color: #ffacd8;
+}
+
+.final-screen p {
+    color: #c8b5d2;
+
+    margin-bottom: 25px;
+}
+
+.final-message {
+    color: #ffb4da;
+
+    font-family: "Pacifico", cursive;
+
+    font-size: 26px;
+}
+
+
+/* ==========================================
+   АНИМАЦИИ
+========================================== */
+
+@keyframes twinkle {
+
+    0%, 100% {
+        opacity: 0.25;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes heartRise {
+
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================
+   ТЕЛЕФОН
+========================================== */
+
+@media (max-width: 600px) {
+
+    .quiz-card {
+        padding: 35px 20px;
+    }
+
+    .gift-card {
+        padding: 35px 25px;
+    }
+
+    .letter {
+        padding: 35px 25px;
+    }
+
+    .letter p {
+        font-size: 13px;
+    }
+}
